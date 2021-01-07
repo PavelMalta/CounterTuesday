@@ -1,0 +1,45 @@
+.App {
+    margin-left: 400px;
+    margin-top: 100px;
+}
+
+.calculate {
+    width: 250px;
+    height: 300px;
+    border: 2px solid black;
+    border-radius: 20px;
+    background-color: aqua;
+}
+
+.monitor {
+    width: 200px;
+    height: 150px;
+    border: 2px solid black;
+    margin: 25px;
+    border-radius: 20px;
+}
+.value {
+    padding: 70px;
+    font-size: 80px;
+}
+.active-value {
+    color: red;
+    padding: 70px;
+    font-size: 100px
+}
+
+.menu {
+    width: 200px;
+    height: 75px;
+    border: 2px solid black;
+    margin-left: 25px;
+    border-radius: 10px;
+}
+.menu button {
+    margin-left: 15px;
+    margin-top: 20px;
+    width: 80px;
+    height: 35px;
+    background-color: aquamarine;
+    cursor: pointer;
+}
