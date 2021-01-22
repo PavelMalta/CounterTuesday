@@ -1,4 +1,3 @@
-import {TextField} from "@material-ui/core";
 import React, {ChangeEvent, useState} from "react";
 import {ButtonPress} from "../Button";
 import {InputItem} from "./InputItem";
@@ -12,27 +11,44 @@ export function SettingsCounter(props: SettingsCounterPropsType) {
     const [newMaxValue, setNewMaxValue] = useState<number>(0)
     const [newStartValue, setNewStartValue] = useState<number>(0)
     const [disabled, setDisabled] = useState<boolean>(true)
+    const [error, setError] = useState<string | null>(null)
 
     const onChangeMaxValue = (e: ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
-        setNewMaxValue(Number(e.currentTarget.value))
-        setDisabled(false)
+        let max = Number(e.currentTarget.value)
+        if (max >= 0 && max > newStartValue) {
+            setDisabled(false)
+            setError(null)
+        } else {
+            setError("Incorect value")
+            setDisabled(true)
+        }
+        setNewMaxValue(max)
     }
     const onChangeStartValue = (e: ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
-        setNewStartValue(Number(e.currentTarget.value))
-        setDisabled(false)
+        let start = Number(e.currentTarget.value)
+
+        if (start > 0 && start < newMaxValue) {
+            setDisabled(false)
+            setError(null)
+        } else {
+            setError("Incorect value")
+            setDisabled(true)
+
+
+        }
+        setNewStartValue(start)
     }
     const sendData = () => {
         props.setMaxValueHandler(newMaxValue);
         props.setStartValueHandler(newStartValue);
         setDisabled(true)
     }
-    const disabledSet = (a:boolean) => a
 
     return (
         <div className={"calculate"}>
             <div className={"monitor"}>
-                <InputItem title={"max value"} newValue={newMaxValue} onChange={onChangeMaxValue}/>
-                <InputItem title={"start value"} newValue={newStartValue} onChange={onChangeStartValue}/>
+                <InputItem title={"max value"} newValue={newMaxValue} onChange={onChangeMaxValue} error={error}/>
+                <InputItem title={"start value"} newValue={newStartValue} onChange={onChangeStartValue} error={error}/>
 
             </div>
             <div className={"menu"}>

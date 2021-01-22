@@ -9,6 +9,7 @@
 }
 
 .monitor {
+    text-align: center;
     width: 450px;
     height: 150px;
     border: 2px solid black;
@@ -26,6 +27,7 @@
 }
 
 .menu {
+    text-align: center;
     width: 450px;
     height: 75px;
     border: 2px solid black;
