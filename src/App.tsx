@@ -54,6 +54,7 @@ function App() {
                 </Grid>
                 <Grid item style={{margin: "30px"}}>
                     <Increment value={value}
+                               maxValue={maxValue}
                                addValue={addValue}
                                resetValue={resetValue}
                                onInsDisabled={onInsDisabled()}

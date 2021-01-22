@@ -19,7 +19,7 @@ export function SettingsCounter(props: SettingsCounterPropsType) {
             setDisabled(false)
             setError(null)
         } else {
-            setError("Incorect value")
+            setError("Incorrect value")
             setDisabled(true)
         }
         setNewMaxValue(max)
@@ -31,7 +31,7 @@ export function SettingsCounter(props: SettingsCounterPropsType) {
             setDisabled(false)
             setError(null)
         } else {
-            setError("Incorect value")
+            setError("Incorrect value")
             setDisabled(true)
 
 

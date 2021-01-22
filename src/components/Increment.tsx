@@ -5,6 +5,7 @@ import {ButtonPress} from "./Button";
 
 type IncrementPropsType = {
     value: number
+    maxValue: number
     addValue: () => void
     resetValue: () => void
     onInsDisabled: boolean
@@ -24,7 +25,7 @@ export function Increment(props: IncrementPropsType) {
     return (
         <div className={"calculate"}>
             <div className={"monitor"}>
-                <span className={props.value === 5 ? "active-value" : "value"}>{props.value}</span>
+                <span className={props.value === props.maxValue ? "active-value" : "value"}>{props.value}</span>
             </div>
             <div className={"menu"}>
                 <ButtonPress title={"Inc"} onClick={onIncHandler} disabled={props.onInsDisabled}/>
