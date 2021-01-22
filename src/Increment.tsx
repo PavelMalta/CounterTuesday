@@ -1,4 +1,5 @@
 import './App.css';
+import {Button} from "./Button";
 
 
 type IncrementPropsType = {
@@ -25,31 +26,19 @@ export function Increment(props: IncrementPropsType) {
         }
     }
 
-
     return (
         <div className={"calculate"}>
             <div className={"monitor"}>
                 <span className={props.value === 5 ? "active-value" : "value"}>{props.value}</span>
             </div>
             <div className={"menu"}>
-                <button onClick={onIncHandler} disabled={onInsDisabled()}>Inc</button>
-                <button onClick={onResetHandler} disabled={onResetDisabled()}>Reset</button>
+                <Button title={"Inc"} onClick={onIncHandler} disabled={onInsDisabled}/>
+                <Button title={"Reset"} onClick={onResetHandler} disabled={onResetDisabled}/>
             </div>
         </div>
     )
 }
 
-/*
-<Button title={"Inc"} onClick={onIncHandler} disabled={onInsDisabled}/>
-<Button title={"Reset"} onClick={onResetHandler} disabled={onResetDisabled}/>
-type ButtonPropsType = {
-    title: string
-    onClick: () => void
-    disabled: () => void
-}
 
-function Button (props: ButtonPropsType) {
-    return (
-    <button onClick={props.onClick} disabled={props.disabled}>{props.title}</button>
-    )
-}*/
+
+
