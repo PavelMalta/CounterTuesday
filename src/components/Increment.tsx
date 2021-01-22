@@ -1,23 +1,24 @@
 import '../App.css';
 import {ButtonPress} from "./Button";
+import {useState} from "react";
 
 
 type IncrementPropsType = {
     value: number
     addValue: () => void
     resetValue: () => void
-    onInsDisabled: () => boolean | undefined
-    onResetDisabled: () => boolean | undefined
+    onInsDisabled: boolean
+    onResetDisabled: boolean
 }
 
 export function Increment(props: IncrementPropsType) {
+
     const onIncHandler = () => {
         props.addValue()
     }
     const onResetHandler = () => {
         props.resetValue()
     }
-
 
 
     return (

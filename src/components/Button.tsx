@@ -5,7 +5,7 @@ import Button from '@material-ui/core/Button';
 type ButtonPressPropsType = {
     title: string
     onClick: () => void
-    disabled: () => boolean | undefined
+    disabled: boolean
 }
 
 export function ButtonPress(props: ButtonPressPropsType) {
@@ -13,7 +13,7 @@ export function ButtonPress(props: ButtonPressPropsType) {
         <Button variant="contained"
                 color="secondary"
                 onClick={props.onClick}
-                disabled={props.disabled()}
+                disabled={props.disabled}
         >
             {props.title}
         </Button>

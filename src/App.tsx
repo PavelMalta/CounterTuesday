@@ -19,8 +19,6 @@ function App() {
         value = startValue;
         setValue(value)
     }
-    const onInsDisabled = () => value === maxValue
-    const onResetDisabled = () => value === startValue
 
     let setStartValueHandler = (newStartValue: number) => {
         setStartValue(newStartValue)
@@ -30,6 +28,20 @@ function App() {
         setMaxValue(newMaxValue)
     }
 
+    const onInsDisabled = () => {
+        if (value === maxValue){
+            return true
+        } else {
+            return false
+        }
+    }
+    const onResetDisabled = () => {
+        if (value === startValue){
+            return true
+        } else {
+            return false
+        }
+    }
 
     return (
         <Container>
@@ -44,8 +56,8 @@ function App() {
                     <Increment value={value}
                                addValue={addValue}
                                resetValue={resetValue}
-                               onInsDisabled={onInsDisabled}
-                               onResetDisabled={onResetDisabled}
+                               onInsDisabled={onInsDisabled()}
+                               onResetDisabled={onResetDisabled()}
                     />
                 </Grid>
             </Grid>

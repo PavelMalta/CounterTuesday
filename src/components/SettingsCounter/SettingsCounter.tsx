@@ -11,18 +11,22 @@ type SettingsCounterPropsType = {
 export function SettingsCounter(props: SettingsCounterPropsType) {
     const [newMaxValue, setNewMaxValue] = useState<number>(0)
     const [newStartValue, setNewStartValue] = useState<number>(0)
+    const [disabled, setDisabled] = useState<boolean>(true)
 
     const onChangeMaxValue = (e: ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
         setNewMaxValue(Number(e.currentTarget.value))
+        setDisabled(false)
     }
     const onChangeStartValue = (e: ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
         setNewStartValue(Number(e.currentTarget.value))
+        setDisabled(false)
     }
     const sendData = () => {
         props.setMaxValueHandler(newMaxValue);
         props.setStartValueHandler(newStartValue);
+        setDisabled(true)
     }
-    const disabledSet = () => false
+    const disabledSet = (a:boolean) => a
 
     return (
         <div className={"calculate"}>
@@ -35,7 +39,7 @@ export function SettingsCounter(props: SettingsCounterPropsType) {
                 <ButtonPress
                     title={"set"}
                     onClick={sendData}
-                    disabled={disabledSet}
+                    disabled={disabled}
                 />
             </div>
         </div>
