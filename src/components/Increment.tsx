@@ -1,5 +1,5 @@
-import './App.css';
-import {Button} from "./Button";
+import '../App.css';
+import {ButtonPress} from "./Button";
 
 
 type IncrementPropsType = {
@@ -15,16 +15,9 @@ export function Increment(props: IncrementPropsType) {
     const onResetHandler = () => {
         props.resetValue()
     }
-    const onInsDisabled = () => {
-        if (props.value === 5) {
-            return true
-        }
-    }
-    const onResetDisabled = () => {
-        if (props.value === 0) {
-            return true
-        }
-    }
+    const onInsDisabled = () => props.value === 5
+    const onResetDisabled = () => props.value === 0
+
 
     return (
         <div className={"calculate"}>
@@ -32,8 +25,8 @@ export function Increment(props: IncrementPropsType) {
                 <span className={props.value === 5 ? "active-value" : "value"}>{props.value}</span>
             </div>
             <div className={"menu"}>
-                <Button title={"Inc"} onClick={onIncHandler} disabled={onInsDisabled}/>
-                <Button title={"Reset"} onClick={onResetHandler} disabled={onResetDisabled}/>
+                <ButtonPress title={"Inc"} onClick={onIncHandler} disabled={onInsDisabled}/>
+                <ButtonPress title={"Reset"} onClick={onResetHandler} disabled={onResetDisabled}/>
             </div>
         </div>
     )

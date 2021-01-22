@@ -1,6 +1,8 @@
 import React, {useState} from 'react';
 import './App.css';
-import {Increment} from './Increment';
+import {Increment} from './components/Increment';
+import {Container, Grid} from "@material-ui/core";
+import {SettingsCounter} from "./components/SettingsCounter";
 
 
 function App() {
@@ -16,12 +18,19 @@ function App() {
 
 
     return (
-        <div className="App">
-            <Increment value={value}
-                       addValue={addValue}
-                       resetValue={resetValue}
-            />
-        </div>
+        <Container>
+            <Grid container className="App" >
+            <Grid item style={{margin: "30px"}}>
+                <SettingsCounter/>
+            </Grid>
+            <Grid item style={{margin: "30px"}}>
+                <Increment value={value}
+                           addValue={addValue}
+                           resetValue={resetValue}
+                />
+            </Grid>
+        </Grid>
+        </Container>
     );
 }
 
