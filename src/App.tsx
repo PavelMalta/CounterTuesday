@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import './App.css';
 import {Increment} from './components/Increment';
 import {Container, Grid} from "@material-ui/core";
-import {SettingsCounter} from "./components/SettingsCounter";
+import {SettingsCounter} from "./components/SettingsCounter/SettingsCounter";
 
 
 function App() {
