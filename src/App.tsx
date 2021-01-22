@@ -6,30 +6,49 @@ import {SettingsCounter} from "./components/SettingsCounter";
 
 
 function App() {
-    let [value, setValue] = useState<number>(0)
+    let [startValue, setStartValue] = useState<number>(0);
+    let [maxValue, setMaxValue] = useState<number>(0);
+    let [value, setValue] = useState<number>(startValue);
 
     let addValue = () => {
-        setValue(value + 1);
+        if (value !== maxValue) {
+            setValue(value + 1);
+        }
     }
     let resetValue = () => {
-        value = 0;
+        value = startValue;
         setValue(value)
+    }
+    const onInsDisabled = () => value === maxValue
+    const onResetDisabled = () => value === startValue
+
+    let setStartValueHandler = (newStartValue: number) => {
+        setStartValue(newStartValue)
+        setValue(newStartValue)
+    }
+    let setMaxValueHandler = (newMaxValue: number) => {
+        setMaxValue(newMaxValue)
     }
 
 
     return (
         <Container>
-            <Grid container className="App" >
-            <Grid item style={{margin: "30px"}}>
-                <SettingsCounter/>
+            <Grid container className="App">
+                <Grid item style={{margin: "30px"}}>
+                    <SettingsCounter
+                        setStartValueHandler={setStartValueHandler}
+                        setMaxValueHandler={setMaxValueHandler}
+                    />
+                </Grid>
+                <Grid item style={{margin: "30px"}}>
+                    <Increment value={value}
+                               addValue={addValue}
+                               resetValue={resetValue}
+                               onInsDisabled={onInsDisabled}
+                               onResetDisabled={onResetDisabled}
+                    />
+                </Grid>
             </Grid>
-            <Grid item style={{margin: "30px"}}>
-                <Increment value={value}
-                           addValue={addValue}
-                           resetValue={resetValue}
-                />
-            </Grid>
-        </Grid>
         </Container>
     );
 }
