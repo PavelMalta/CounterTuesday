@@ -8,13 +8,15 @@ type SettingsCounterPropsType = {
 }
 
 export function SettingsCounter(props: SettingsCounterPropsType) {
-    const [newMaxValue, setNewMaxValue] = useState<number>(0)
-    const [newStartValue, setNewStartValue] = useState<number>(0)
+
+    const [newMaxValue, setNewMaxValue] = useState<number>(Number(localStorage.getItem('max')))
+    const [newStartValue, setNewStartValue] = useState<number>(Number(localStorage.getItem('start')))
     const [disabled, setDisabled] = useState<boolean>(true)
     const [error, setError] = useState<string | null>(null)
 
     const onChangeMaxValue = (e: ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
         let max = Number(e.currentTarget.value)
+        localStorage.setItem('max', max.toString())
         if (max >= 0 && max > newStartValue) {
             setDisabled(false)
             setError(null)
@@ -24,17 +26,16 @@ export function SettingsCounter(props: SettingsCounterPropsType) {
         }
         setNewMaxValue(max)
     }
+
     const onChangeStartValue = (e: ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
         let start = Number(e.currentTarget.value)
-
-        if (start > 0 && start < newMaxValue) {
+        localStorage.setItem('start', start.toString())
+        if (start >= 0 && start < newMaxValue) {
             setDisabled(false)
             setError(null)
         } else {
             setError("Incorrect value")
             setDisabled(true)
-
-
         }
         setNewStartValue(start)
     }
