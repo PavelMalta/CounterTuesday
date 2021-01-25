@@ -1,6 +1,20 @@
+.error {
+    text-align: center;
+    color: red;
+    font-size: 40px;
+    margin-top: 50px;
+}
+.instructions {
+    text-align: center;
+    font-size: 25px;
+    margin-top: 50px;
+}
+.error-input {
+    background-color: #ff886a;
+    border: red;
+}
 
-
-.calculate {
+ .calculate {
     width: 500px;
     height: 300px;
     border: 2px solid black;
@@ -16,10 +30,12 @@
     margin: 25px;
     border-radius: 20px;
 }
+
 .value {
     padding: 70px;
     font-size: 80px;
 }
+
 .active-value {
     color: red;
     padding: 70px;
@@ -34,6 +50,7 @@
     margin-left: 25px;
     border-radius: 10px;
 }
+
 .menu button {
     margin-left: 15px;
     margin-top: 20px;

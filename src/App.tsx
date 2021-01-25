@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import './App.css';
-import {Increment} from './components/Increment';
+import {Increment} from './components/Increment/Increment';
 import {Container, Grid} from "@material-ui/core";
 import {SettingsCounter} from "./components/SettingsCounter/SettingsCounter";
 
@@ -9,6 +9,8 @@ function App() {
     let [startValue, setStartValue] = useState<number>(0);
     let [maxValue, setMaxValue] = useState<number>(0);
     let [value, setValue] = useState<number>(startValue);
+    const [error, setError] = useState<string | null>(null)
+    const [disabledSetButton, setDisabledSetButton] = useState<boolean>(true)
 
     let addValue = () => {
         if (value !== maxValue) {
@@ -29,14 +31,14 @@ function App() {
     }
 
     const onInsDisabled = () => {
-        if (value === maxValue){
+        if (value === maxValue || error || !disabledSetButton){
             return true
         } else {
             return false
         }
     }
     const onResetDisabled = () => {
-        if (value === startValue){
+        if (value === startValue || error || !disabledSetButton){
             return true
         } else {
             return false
@@ -50,15 +52,21 @@ function App() {
                     <SettingsCounter
                         setStartValueHandler={setStartValueHandler}
                         setMaxValueHandler={setMaxValueHandler}
+                        error={error}
+                        setError={setError}
+                        disabledSetButton={disabledSetButton}
+                        setDisabledSetButton={setDisabledSetButton}
                     />
                 </Grid>
                 <Grid item style={{margin: "30px"}}>
                     <Increment value={value}
+                               error={error}
                                maxValue={maxValue}
                                addValue={addValue}
                                resetValue={resetValue}
                                onInsDisabled={onInsDisabled()}
                                onResetDisabled={onResetDisabled()}
+                               disabledSetButton={disabledSetButton}
                     />
                 </Grid>
             </Grid>
